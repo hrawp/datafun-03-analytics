@@ -16,7 +16,7 @@ py -m venv .venv
 py -m pip install -r requirements.txt
 '''
 
-# Git add and commit
+# Git add and commit details
 '''
 git add .
 
