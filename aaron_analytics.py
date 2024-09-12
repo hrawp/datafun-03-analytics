@@ -26,7 +26,6 @@ project_path = pathlib.Path.cwd()
 #data_path.mkdir(exist_ok=True)
 
 
-
 filenametxt = "data.txt"
 folder_name = f"{project_path}"
 
@@ -37,9 +36,6 @@ filenameexcel = "data.xls"
 def fetch_and_write_txt_data(folder_name, filenametxt, text_url):
     response = requests.get(text_url)
     if response.status_code == 200:
-        #data = response.json()
- #       print(json.dumps(data, indent=4))
-  #      print(f"Text 1 data saved to {file_path}")
         file_path = pathlib.Path(folder_name).joinpath(filenametxt) # use pathlib to join paths
         with file_path.open('w') as file:
             file.write(response.text)
@@ -56,13 +52,9 @@ def fetch_and_write_txt_data(folder_name, filenametxt, text_url):
 def fetch_and_write_excel_data(folder_name, filenameexcel, excel_url):
     response = requests.get(excel_url)
     if response.status_code == 200:
-        #data = response.json()
- #       print(json.dumps(data, indent=4))
-  #      print(f"Text 1 data saved to {file_path}")
         file_path = pathlib.Path(folder_name).joinpath(filenameexcel) # use pathlib to join paths
         with file_path.open('w') as file:
             file.write(response.text)
-         #   json.dump(response.json(), file, indent=4)
         print(f"Excel data saved to {file_path}")
     else:
         print(f"Failed to fetch data: {response.status_code}")
@@ -70,11 +62,9 @@ def fetch_and_write_excel_data(folder_name, filenameexcel, excel_url):
 def fetch_and_write_csv_data(folder_name, filenamecsv, csv_url):
     response = requests.get(csv_url)
     if response.status_code == 200:
-   
         file_path = pathlib.Path(folder_name).joinpath(filenamecsv) # use pathlib to join paths
         with file_path.open('w') as file:
             file.write(response.text)
-       
         print(f"csv data saved to {file_path}")
     else:
         print(f"Failed to fetch data: {response.status_code}")
@@ -82,13 +72,9 @@ def fetch_and_write_csv_data(folder_name, filenamecsv, csv_url):
 def fetch_and_write_json_data(folder_name, filenamejson, json_url):
     response = requests.get(json_url)
     if response.status_code == 200:
-        #data = response.json()
- #       print(json.dumps(data, indent=4))
-  #      print(f"Text 1 data saved to {file_path}")
         file_path = pathlib.Path(folder_name).joinpath(filenamejson) # use pathlib to join paths
         with file_path.open('w') as file:
             file.write(response.text)
-         #   json.dump(response.json(), file, indent=4)
         print(f"Json data saved to {file_path}")
     else:
         print(f"Failed to fetch data: {response.status_code}")
@@ -102,7 +88,6 @@ def main() -> None:
     
 
 fetch_and_write_txt_data(folder_name,filenametxt,text_url)
-
 fetch_and_write_json_data(folder_name, filenamejson, json_url)
 fetch_and_write_excel_data(folder_name, filenameexcel, excel_url)
 fetch_and_write_csv_data(folder_name, filenamecsv, csv_url)
