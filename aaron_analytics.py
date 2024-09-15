@@ -16,6 +16,7 @@ from collections import Counter
 import requests 
 from bs4 import BeautifulSoup
 
+
 # Data for project 3
 text_url="https://github.com/denisecase/datafun-03-spec/blob/main/data.txt"
 json_url="https://github.com/CharanSuvarna/stocks/blob/main/stocks.json"
@@ -30,11 +31,11 @@ folder_name = f"{project_path}"
 filenametxt = "datainital.txt"
 filenamejson = "datainital.json"
 filenamecsv = "datainitial.csv"
-filenamexls = "datainitial.xls"
+filenamexls = "datainitial.xlsx"
 filenamefinaltxt = "datafinal.txt"
 filenamefinaljson = "datafinal.json"
 filenamefinalcsv = "datafinal.csv"
-filenamefinalxls = "datafinal.xls"
+filenamefinalxls = "datafinal.xlsx"
 
 # Write Text Data to the PC
 
@@ -56,8 +57,6 @@ def parse_text_data(folder_name, filenametxt, filenamefinaltxt):
         content = file.read()
     soup = BeautifulSoup(content, 'html.parser')
     text = soup.get_text()
-    # Remove HTML tags using regex
-    # text = re.sub(r'<[^>]+>', '', content)
     # Tokenize the text into words
     words = re.findall(r'\b\w+\b', text.lower())
     # Count the frequency of each word
@@ -92,8 +91,6 @@ def parse_excel_data(folder_name, filenamexls, filenamefinalxls):
         content = file.read()
     soup = BeautifulSoup(content, 'html.parser')
     text = soup.get_text()
-    # Remove HTML tags using regex
-    # text = re.sub(r'<[^>]+>', '', content)
     # Tokenize the text into words
     words = re.findall(r'\b\w+\b', text.lower())
     # Count the frequency of each word
@@ -128,8 +125,6 @@ def parse_csv_data(folder_name, filenamecsv, filenamefinalcsv):
         content = file.read()
     soup = BeautifulSoup(content, 'html.parser')
     text = soup.get_text()
-    # Remove HTML tags using regex
-    # text = re.sub(r'<[^>]+>', '', content)
     # Tokenize the text into words
     words = re.findall(r'\b\w+\b', text.lower())
     # Count the frequency of each word
@@ -165,8 +160,6 @@ def parse_json_data(folder_name, filenamejson, filenamefinaljson):
         content = file.read()
     soup = BeautifulSoup(content, 'html.parser')
     text = soup.get_text()
-    # Remove HTML tags using regex
-    # text = re.sub(r'<[^>]+>', '', content)
     # Tokenize the text into words
     words = re.findall(r'\b\w+\b', text.lower())
     # Count the frequency of each word
@@ -189,12 +182,12 @@ def main() -> None:
     ''' Main function to demonstrate module capabilities. '''
     
 
-#fetch_and_write_txt_data(folder_name,filenametxt,text_url)
+fetch_and_write_txt_data(folder_name,filenametxt,text_url)
 fetch_and_write_json_data(folder_name, filenamejson, json_url)
 fetch_and_write_excel_data(folder_name, filenamexls, excel_url)
-#fetch_and_write_csv_data(folder_name, filenamecsv, csv_url)
-#parse_text_data(folder_name, filenametxt, filenamefinaltxt)
-#parse_csv_data(folder_name, filenamecsv, filenamefinalcsv)
+fetch_and_write_csv_data(folder_name, filenamecsv, csv_url)
+parse_text_data(folder_name, filenametxt, filenamefinaltxt)
+parse_csv_data(folder_name, filenamecsv, filenamefinalcsv)
 parse_json_data(folder_name, filenamejson, filenamefinaljson)
 parse_excel_data(folder_name, filenamexls, filenamefinalxls)
 
